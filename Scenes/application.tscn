@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://3cb87w61b0ul"]
+
+[ext_resource type="PackedScene" uid="uid://s5qxuk0o7oyr" path="res://Scenes/file_system.tscn" id="1_s42ny"]
+[ext_resource type="PackedScene" uid="uid://dq08h82adx2r1" path="res://Scenes/UI.tscn" id="2_x3vgm"]
+[ext_resource type="Resource" uid="uid://dy0dvg3i4ymyh" path="res://Data/game_settings.tres" id="4_io0om"]
+
+[node name="Application" type="Node"]
+
+[node name="FileSystem" parent="." instance=ExtResource("1_s42ny")]
+
+[node name="UI" parent="." instance=ExtResource("2_x3vgm")]
+settings = ExtResource("4_io0om")
+
+[connection signal="save_config" from="UI" to="FileSystem" method="_on_ui_save_config"]

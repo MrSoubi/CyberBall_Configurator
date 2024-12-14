@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GameSettings" load_steps=3 format=3 uid="uid://dy0dvg3i4ymyh"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/commentary.gd" id="1_qqxgc"]
+[ext_resource type="Script" path="res://Scripts/Resources/game_settings.gd" id="2_1mjqj"]
+
+[resource]
+script = ExtResource("2_1mjqj")
+setting_name = ""
+nb_throws = 0
+is_chat_enabled = false
+default_chat_message_duration = 0.0
+is_avatar_selection_enabled = false
+avatar_selection = 0
+difficulty = 0
+inclusivity = 0
+is_gender_question_enabled = false
+comments = Array[ExtResource("1_qqxgc")]([])

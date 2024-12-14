@@ -1,21 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq08h82adx2r1"]
+[gd_scene load_steps=3 format=3 uid="uid://dq08h82adx2r1"]
 
-[ext_resource type="Script" path="res://AppManager.gd" id="1_ttx1r"]
-[ext_resource type="Script" path="res://game_settings.gd" id="2_unxrg"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_osdkc"]
 
-[sub_resource type="Resource" id="Resource_r743m"]
-script = ExtResource("2_unxrg")
-setting_name = ""
-nb_throws = 30
-is_chat_enabled = true
-default_chat_message_duration = 2.0
-is_avatar_selection_enabled = false
-difficulty = 0
-inclusivity = 0
-is_gender_question_enabled = false
-comments = Array[Resource]([])
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otrgp"]
 
-[node name="Control" type="Control"]
+[node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,8 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_ttx1r")
-settings = SubResource("Resource_r743m")
+script = ExtResource("1_osdkc")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -34,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_otrgp")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -161,56 +150,124 @@ text = "Demander le genre du joueur avant le lancement du jeu"
 layout_direction = 3
 layout_mode = 2
 
-[node name="PanelContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Avatar" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Avatar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Avatar"
+
+[node name="AvatarChoice" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Avatar"]
+layout_direction = 3
+layout_mode = 2
+item_count = 16
+popup/item_0/text = "Homme 1"
+popup/item_1/text = "Homme 2"
+popup/item_1/id = 1
+popup/item_2/text = "Homme 3"
+popup/item_2/id = 2
+popup/item_3/text = "Homme 4"
+popup/item_3/id = 3
+popup/item_4/text = "Femme 1"
+popup/item_4/id = 4
+popup/item_5/text = "Femme 2"
+popup/item_5/id = 5
+popup/item_6/text = "Femme 3"
+popup/item_6/id = 6
+popup/item_7/text = "Femme 4"
+popup/item_7/id = 8
+popup/item_8/text = "Homme hypersexualisé 1"
+popup/item_8/id = 9
+popup/item_9/text = "Homme hypersexualisé 2"
+popup/item_9/id = 10
+popup/item_10/text = "Homme hypersexualisé 3"
+popup/item_10/id = 11
+popup/item_11/text = "Homme hypersexualisé 4"
+popup/item_11/id = 12
+popup/item_12/text = "Femme hypersexualisée 1"
+popup/item_12/id = 13
+popup/item_13/text = "Femme hypersexualisée 2"
+popup/item_13/id = 14
+popup/item_14/text = "Femme hypersexualisée 3"
+popup/item_14/id = 15
+popup/item_15/text = "Femme hypersexualisée 4"
+popup/item_15/id = 16
+
+[node name="CommentsContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="PanelContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer"]
 layout_mode = 2
 text = "Commentaires des bots"
 horizontal_alignment = 1
 
-[node name="Commentary" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Commentary" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Bot ID"
 
-[node name="BotID" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+[node name="BotID" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
 layout_direction = 3
 layout_mode = 2
 min_value = 1.0
 max_value = 2.0
 value = 1.0
 
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "N° de lancé"
 
-[node name="NdeLance" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+[node name="NdeLance" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
 layout_direction = 3
 layout_mode = 2
 min_value = 1.0
 max_value = 2.0
 value = 1.0
 
-[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Texte"
 
-[node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+[node name="TextEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer"]
 layout_mode = 2
 text = "Ajouter un commentaire"
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SaveButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sauvegarder"
+
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Throws/NumberOfThrows" to="." method="_on_number_of_throws_value_changed"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/ChatActivation/IsChatEnabled" to="." method="_on_is_chat_enabled_toggled"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/MessageDuration/ChatMessageDuration" to="." method="_on_chat_message_duration_value_changed"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/AvatarSelection/IsAvatarSelectionEnabled" to="." method="_on_is_avatar_selection_enabled_toggled"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Difficulty/DifficultyMode" to="." method="_on_difficulty_mode_item_selected"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Inclusivity/InclusivityMode" to="." method="_on_inclusivity_mode_item_selected"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Gender/IsGenderQuestionEnabled" to="." method="_on_is_gender_question_enabled_toggled"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Avatar/AvatarChoice" to="." method="_on_avatar_choice_item_selected"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
