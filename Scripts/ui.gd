@@ -1,11 +1,14 @@
 extends Control
 
 @export var settings: GameSettings = load("res://Data/game_settings.tres")
+@onready var settings_name: LineEdit = $PanelContainer/MarginContainer/VBoxContainer/SettingsName/SettingsName
+@onready var v_box_container: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/CommentsContainer/VBoxContainer
 
 signal save_config(content: String, file_name: String)
 
 func _on_save_button_pressed() -> void:
-	save_config.emit(settings.get_JSON(), settings.setting_name)
+	settings.comments = v_box_container.get_comments()
+	save_config.emit(settings.get_JSON(), settings_name.text)
 
 func _on_number_of_throws_value_changed(value: float) -> void:
 	settings.nb_throws = value

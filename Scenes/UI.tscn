@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq08h82adx2r1"]
+[gd_scene load_steps=5 format=3 uid="uid://dq08h82adx2r1"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_osdkc"]
+[ext_resource type="Script" path="res://Scripts/comments_container.gd" id="2_o2ino"]
+[ext_resource type="PackedScene" uid="uid://qjinkn2oi0sc" path="res://Scenes/commentary.tscn" id="3_4sfxx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otrgp"]
 
@@ -63,6 +65,7 @@ text = "Nombre de lancers"
 [node name="NumberOfThrows" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Throws"]
 layout_direction = 3
 layout_mode = 2
+update_on_text_changed = true
 
 [node name="ChatActivation" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -89,6 +92,7 @@ text = "Durée d'affichage des messages"
 [node name="ChatMessageDuration" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/MessageDuration"]
 layout_direction = 3
 layout_mode = 2
+update_on_text_changed = true
 
 [node name="AvatarSelection" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -208,51 +212,19 @@ layout_mode = 2
 text = "Commentaires des bots"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer"]
+[node name="CommentsContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/CommentsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("2_o2ino")
+commentary_scene = ExtResource("3_4sfxx")
 
-[node name="Commentary" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Commentary" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/CommentsContainer/VBoxContainer" instance=ExtResource("3_4sfxx")]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Bot ID"
-
-[node name="BotID" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
-layout_direction = 3
-layout_mode = 2
-min_value = 1.0
-max_value = 2.0
-value = 1.0
-
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "N° de lancé"
-
-[node name="NdeLance" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
-layout_direction = 3
-layout_mode = 2
-min_value = 1.0
-max_value = 2.0
-value = 1.0
-
-[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Texte"
-
-[node name="TextEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/ScrollContainer/VBoxContainer/Commentary"]
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer"]
 layout_mode = 2
@@ -270,4 +242,5 @@ text = "Sauvegarder"
 [connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Inclusivity/InclusivityMode" to="." method="_on_inclusivity_mode_item_selected"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Gender/IsGenderQuestionEnabled" to="." method="_on_is_gender_question_enabled_toggled"]
 [connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Avatar/AvatarChoice" to="." method="_on_avatar_choice_item_selected"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/CommentsContainer/VBoxContainer" method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

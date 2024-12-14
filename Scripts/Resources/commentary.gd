@@ -1,7 +1,7 @@
 class_name Commentary extends Resource
 
-@export var bot_id: int
-@export var throw_id: int
+@export var bot_id: int = 1
+@export var throw_id: int = 1
 @export var text: String
 
 func get_json() -> String :

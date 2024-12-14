@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://qjinkn2oi0sc"]
+
+[ext_resource type="Script" path="res://Scripts/commentary.gd" id="1_pfwil"]
+
+[node name="Commentary" type="HBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_pfwil")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Bot ID"
+
+[node name="BotID" type="SpinBox" parent="."]
+layout_direction = 3
+layout_mode = 2
+min_value = 1.0
+max_value = 2.0
+value = 1.0
+update_on_text_changed = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "N° de lancé"
+
+[node name="NdeLance" type="SpinBox" parent="."]
+layout_direction = 3
+layout_mode = 2
+min_value = 1.0
+max_value = 30.0
+value = 1.0
+update_on_text_changed = true
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Texte"
+
+[node name="TextEdit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Supprimer"
+
+[connection signal="value_changed" from="BotID" to="." method="_on_bot_id_value_changed"]
+[connection signal="value_changed" from="NdeLance" to="." method="_on_nde_lance_value_changed"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
