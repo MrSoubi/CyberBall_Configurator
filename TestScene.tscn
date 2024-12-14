@@ -1,0 +1,216 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq08h82adx2r1"]
+
+[ext_resource type="Script" path="res://AppManager.gd" id="1_ttx1r"]
+[ext_resource type="Script" path="res://game_settings.gd" id="2_unxrg"]
+
+[sub_resource type="Resource" id="Resource_r743m"]
+script = ExtResource("2_unxrg")
+setting_name = ""
+nb_throws = 30
+is_chat_enabled = true
+default_chat_message_duration = 2.0
+is_avatar_selection_enabled = false
+difficulty = 0
+inclusivity = 0
+is_gender_question_enabled = false
+comments = Array[Resource]([])
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ttx1r")
+settings = SubResource("Resource_r743m")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SettingsName" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/SettingsName"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nom du fichier de paramètrage"
+
+[node name="SettingsName" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/SettingsName"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Throws" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Throws"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nombre de lancers"
+
+[node name="NumberOfThrows" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Throws"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="ChatActivation" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/ChatActivation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Activation du chat"
+
+[node name="IsChatEnabled" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/ChatActivation"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="MessageDuration" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/MessageDuration"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Durée d'affichage des messages"
+
+[node name="ChatMessageDuration" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/MessageDuration"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="AvatarSelection" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/AvatarSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Activer la sélection de l'avatar du joueur"
+
+[node name="IsAvatarSelectionEnabled" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/AvatarSelection"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Difficulty" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Difficulty"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Difficulté"
+
+[node name="DifficultyMode" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Difficulty"]
+layout_direction = 3
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "NORMAL"
+popup/item_1/text = "HARD"
+popup/item_1/id = 1
+
+[node name="Inclusivity" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Inclusivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inclusivité"
+
+[node name="InclusivityMode" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Inclusivity"]
+layout_direction = 3
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "INCLUSIF"
+popup/item_1/text = "EXCLUSIF"
+popup/item_1/id = 1
+
+[node name="Gender" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Gender"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Demander le genre du joueur avant le lancement du jeu"
+
+[node name="IsGenderQuestionEnabled" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer/Gender"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="PanelContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Commentaires des bots"
+horizontal_alignment = 1
+
+[node name="Commentary" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Bot ID"
+
+[node name="BotID" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+layout_direction = 3
+layout_mode = 2
+min_value = 1.0
+max_value = 2.0
+value = 1.0
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "N° de lancé"
+
+[node name="NdeLance" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+layout_direction = 3
+layout_mode = 2
+min_value = 1.0
+max_value = 2.0
+value = 1.0
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Texte"
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Commentary"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Ajouter un commentaire"
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sauvegarder"
