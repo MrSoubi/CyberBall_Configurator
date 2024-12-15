@@ -48,10 +48,11 @@ func get_JSON() -> String:
 	
 	result += "\"comments\": ["
 	
-	for c in comments:
-		result += c.get_json() + ","
-	
-	result = result.erase(result.length()-1)
+	if (comments.size() > 0):
+		for c in comments:
+			result += c.get_json() + ","
+		
+		result = result.erase(result.length()-1)
 	
 	result += "]"
 	
