@@ -1,8 +1,8 @@
 extends Control
 
 @export var settings: GameSettings = load("res://Data/game_settings.tres")
-@onready var settings_name: LineEdit = $PanelContainer/MarginContainer/VBoxContainer/SettingsName/SettingsName
-@onready var v_box_container: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/CommentsContainer/PanelContainer/CommentsContainer/VBoxContainer
+@onready var settings_name: LineEdit = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer/SettingsName/SettingsName
+@onready var v_box_container: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/CommentsContainer/PanelContainer/CommentsContainer/VBoxContainer
 
 signal save_config(content: String, file_name: String)
 
