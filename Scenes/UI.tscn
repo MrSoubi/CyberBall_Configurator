@@ -150,6 +150,7 @@ layout_mode = 2
 update_on_text_changed = true
 
 [node name="AvatarSelectionContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = ExtResource("2_wq5q2")
@@ -281,38 +282,12 @@ text = "Avatar"
 [node name="AvatarChoice" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/GridContainer/AvatarContainer/MarginContainer/Avatar"]
 layout_direction = 3
 layout_mode = 2
-item_count = 16
-popup/item_0/text = "Homme 1"
-popup/item_1/text = "Homme 2"
+item_count = 3
+popup/item_0/text = "Libre"
+popup/item_1/text = "Homme Hypersexualisé"
 popup/item_1/id = 1
-popup/item_2/text = "Homme 3"
+popup/item_2/text = "Femme Hypersexualisée"
 popup/item_2/id = 2
-popup/item_3/text = "Homme 4"
-popup/item_3/id = 3
-popup/item_4/text = "Femme 1"
-popup/item_4/id = 4
-popup/item_5/text = "Femme 2"
-popup/item_5/id = 5
-popup/item_6/text = "Femme 3"
-popup/item_6/id = 6
-popup/item_7/text = "Femme 4"
-popup/item_7/id = 8
-popup/item_8/text = "Homme hypersexualisé 1"
-popup/item_8/id = 9
-popup/item_9/text = "Homme hypersexualisé 2"
-popup/item_9/id = 10
-popup/item_10/text = "Homme hypersexualisé 3"
-popup/item_10/id = 11
-popup/item_11/text = "Homme hypersexualisé 4"
-popup/item_11/id = 12
-popup/item_12/text = "Femme hypersexualisée 1"
-popup/item_12/id = 13
-popup/item_13/text = "Femme hypersexualisée 2"
-popup/item_13/id = 14
-popup/item_14/text = "Femme hypersexualisée 3"
-popup/item_14/id = 15
-popup/item_15/text = "Femme hypersexualisée 4"
-popup/item_15/id = 16
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
